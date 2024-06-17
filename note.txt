@@ -1,0 +1,12 @@
+Code:
+	Arduino kit rs485
+		Master 			(đang tiến hành)
+		Slave			(đang tiến hành)
+	Python check file
+		sthing.py 		( )
+	Random bit string generator:
+		rbsg.py 		(đang tiến hành)
+
+Xây dựng kịch bản đo:
+
+Phương pháp kiểm nghiệm
