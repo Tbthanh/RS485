@@ -1,9 +1,9 @@
 #include <SoftwareSerial.h>
 
-#define SSerialRX        10  //Serial Receive pin
-#define SSerialTX        11  //Serial Transmit pin
+#define SSerialRX        0  //Serial Receive pin
+#define SSerialTX        1  //Serial Transmit pin
 
-#define SSerialTxControl 3   //RS485 Direction control
+#define SSerialTxControl 2   //RS485 Direction control
 
 SoftwareSerial RS485Serial(SSerialRX, SSerialTX); // RX, TX
 
