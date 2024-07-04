@@ -32,7 +32,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define MSG_SIZE 64
+#define MSG_SIZE 16
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -50,13 +50,14 @@ uint8_t RxData[MSG_SIZE];
 int indx = 0;
 
 uint8_t test[MSG_SIZE] = { 1, 1, 1, 1, 1, 0, 1, 1,
-                           0, 0, 0, 1, 1, 1, 1, 0,
-                           0, 1, 1, 1, 1, 0, 0, 0,
-                           0, 1, 1, 1, 1, 0, 0, 0,
-                           1, 1, 0, 1, 1, 1, 1, 1,
-                           0, 1, 1, 0, 1, 1, 1, 1,
-                           1, 0, 0, 1, 1, 0, 0, 0,
-                           1, 0, 1, 1, 1, 0, 1, 0 };
+                           0, 0, 0, 1, 1, 1, 1, 0 //,
+//                           0, 1, 1, 1, 1, 0, 0, 0,
+//                           0, 1, 1, 1, 1, 0, 0, 0,
+//                           1, 1, 0, 1, 1, 1, 1, 1,
+//                           0, 1, 1, 0, 1, 1, 1, 1,
+//                           1, 0, 0, 1, 1, 0, 0, 0,
+//                           1, 0, 1, 1, 1, 0, 1, 0
+};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -105,7 +106,7 @@ int main(void)
   MX_USART2_UART_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-  HAL_UARTEx_ReceiveToIdle_IT(&huart1, RxData, 16);
+  HAL_UARTEx_ReceiveToIdle_IT(&huart1, RxData, MSG_SIZE);
   /* USER CODE END 2 */
 
   /* Infinite loop */
