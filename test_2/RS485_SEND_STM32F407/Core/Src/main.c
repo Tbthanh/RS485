@@ -33,6 +33,7 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 #define MSG_SIZE 16
+#define TEST 5
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -79,6 +80,7 @@ void sendData (uint8_t *data);
   */
 int main(void)
 {
+
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
@@ -104,22 +106,53 @@ int main(void)
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
   HAL_UARTEx_ReceiveToIdle_IT(&huart2, RxData, MSG_SIZE);
-
+#if (TEST == 1)
   for (int i = 0; i < MSG_SIZE; i++)
     {
   	  TxData[i] = test[i];
     }
+
+  for (int i = 0; i < 100; i++)
+  {
+	  sendData (TxData);
+	  HAL_Delay(500);
+  }
+#endif
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+#if (TEST == 2)
+	  sprintf(TxData, "1111101100011110");
 	  sendData (TxData);
 	  HAL_Delay(1000);
+#endif
+
+#if (TEST == 3)
+	  sprintf(TxData, "aloha");
+	  sendData (TxData);
+	  HAL_Delay(1000);
+#endif
+
+#if (TEST == 4)
+	  sprintf(TxData, "IOT bkhn");
+	  sendData (TxData);
+	  HAL_Delay(1000);
+#endif
+
+#if (TEST == 5)
+	  sprintf(TxData, "D.V.Hung dep zai");
+	  sendData (TxData);
+	  HAL_Delay(1000);
+#endif
+
+	  // while(1){}
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	  indx++;
   }
   /* USER CODE END 3 */
 }
@@ -146,9 +179,9 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
   RCC_OscInitStruct.PLL.PLLM = 4;
-  RCC_OscInitStruct.PLL.PLLN = 72;
+  RCC_OscInitStruct.PLL.PLLN = 64;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
-  RCC_OscInitStruct.PLL.PLLQ = 3;
+  RCC_OscInitStruct.PLL.PLLQ = 7;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();
@@ -159,11 +192,11 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV8;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
   {
     Error_Handler();
   }
@@ -362,7 +395,7 @@ static void MX_GPIO_Init(void)
   */
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 {
-	HAL_UARTEx_ReceiveToIdle_IT(&huart2, RxData, 16);
+	HAL_UARTEx_ReceiveToIdle_IT(&huart2, RxData, MSG_SIZE);
 }
 
 /**
