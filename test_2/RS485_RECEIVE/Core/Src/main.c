@@ -105,7 +105,7 @@ int main(void)
   {
 //	  sprintf(TxData, "F103 %d", indx++);
 //	  sendData (TxData);
-	  HAL_Delay(1000);
+//	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -251,7 +251,8 @@ static void MX_GPIO_Init(void)
   */
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 {
-	HAL_UARTEx_ReceiveToIdle_IT(&huart1, RxData, 16);
+	HAL_UARTEx_ReceiveToIdle_IT(&huart1, RxData, MSG_SIZE);
+
 }
 
 /**
