@@ -1,5 +1,5 @@
 # Note:
-### Code for STM32F103C8T6:
+### Code for STM32F103C8T6 (bluepill):
   `Receive` : <https://github.com/Tbthanh/RS485/tree/71b3b17810f10d6b6b4b2195dc3e90bd7bdfc1ba/test_2/RS485_RECEIVE>
   
   `Sent` : <https://github.com/Tbthanh/RS485/tree/71b3b17810f10d6b6b4b2195dc3e90bd7bdfc1ba/test_2/RS485_SEND>
