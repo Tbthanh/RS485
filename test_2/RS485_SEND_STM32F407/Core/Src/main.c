@@ -33,7 +33,7 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 #define MSG_SIZE 16
-#define TEST 5
+#define TEST 6
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -143,9 +143,43 @@ int main(void)
 #endif
 
 #if (TEST == 5)
-	  sprintf(TxData, "D.V.Hung dep zai");
+	  snprintf(TxData, sizeof TxData,"%.*s", MSG_SIZE, "DVHung dep zai.");
+//	  sprintf(TxData, "D.V.Hung dep zai");
 	  sendData (TxData);
 	  HAL_Delay(1000);
+#endif
+
+#if (TEST == 6)
+	snprintf(TxData, sizeof TxData,"%.*s", MSG_SIZE, "8GZ3F7X9Q1A5J2B");
+	sendData (TxData);
+	HAL_Delay(1000);
+	snprintf(TxData, sizeof TxData,"%.*s", MSG_SIZE, "D4H8K2N6T7P9W1R");
+	sendData (TxData);
+	HAL_Delay(1000);
+	snprintf(TxData, sizeof TxData,"%.*s", MSG_SIZE, "X3C2L7V8N5A4J6Q");
+	sendData (TxData);
+	HAL_Delay(1000);
+	snprintf(TxData, sizeof TxData,"%.*s", MSG_SIZE, "P9Y5B2T8W4R7K1L");
+	sendData (TxData);
+	HAL_Delay(1000);
+	snprintf(TxData, sizeof TxData,"%.*s", MSG_SIZE, "M1J4X7C8V2N5A3Q");
+	sendData (TxData);
+	HAL_Delay(1000);
+	snprintf(TxData, sizeof TxData,"%.*s", MSG_SIZE, "R6D8L2K4T5N9J3P");
+	sendData (TxData);
+	HAL_Delay(1000);
+	snprintf(TxData, sizeof TxData,"%.*s", MSG_SIZE, "7X2F3G6H5P9Q1T4");
+	sendData (TxData);
+	HAL_Delay(1000);
+	snprintf(TxData, sizeof TxData,"%.*s", MSG_SIZE, "L3P7N9J2K4W6T8D");
+	sendData (TxData);
+	HAL_Delay(1000);
+	snprintf(TxData, sizeof TxData,"%.*s", MSG_SIZE, "C5X8A2B4T7N6L3Q");
+	sendData (TxData);
+	HAL_Delay(1000);
+	snprintf(TxData, sizeof TxData,"%.*s", MSG_SIZE, "Q2N7J5T8K4W1R6P");
+	sendData (TxData);
+	HAL_Delay(1000);
 #endif
 
 	  // while(1){}
@@ -179,9 +213,9 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
   RCC_OscInitStruct.PLL.PLLM = 4;
-  RCC_OscInitStruct.PLL.PLLN = 64;
+  RCC_OscInitStruct.PLL.PLLN = 72;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
-  RCC_OscInitStruct.PLL.PLLQ = 7;
+  RCC_OscInitStruct.PLL.PLLQ = 3;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();
@@ -192,11 +226,11 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV8;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
   {
     Error_Handler();
   }

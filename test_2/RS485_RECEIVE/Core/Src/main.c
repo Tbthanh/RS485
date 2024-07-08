@@ -71,6 +71,7 @@ void sendData (uint8_t *data);
   */
 int main(void)
 {
+
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
